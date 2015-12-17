@@ -1,6 +1,6 @@
 {
   "name": "generator-sass-gulp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Generate a SASS base project with Gulp",
   "homepage": "",
   "author": {
