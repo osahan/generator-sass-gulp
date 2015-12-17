@@ -13,6 +13,7 @@ npm install -g generator-sass-gulp
 Then generate your new project:
 
 ```bash
+mkdir my-sass-project && cd $_
 yo sass-gulp
 ```
 
@@ -23,7 +24,6 @@ Yeoman has a heart of gold. He&#39;s a person with feelings and opinions, but he
 ## License
 
 MIT © [Gagandeep Singh]()
-
 
 [npm-image]: https://badge.fury.io/js/generator-sass-gulp.svg
 [npm-url]: https://npmjs.org/package/generator-sass-gulp
