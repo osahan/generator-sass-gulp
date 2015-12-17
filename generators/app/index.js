@@ -45,6 +45,7 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('_.editorconfig', '.editorconfig');
     this.copy('_README.md', 'README.md');
     this.copy('_index.scss', 'src/app/index.scss');
+    this.copy('_demo.scss', 'src/app/styles/demo/_demo.scss');
     this.copy('_index.html', 'src/index.html');
     this.copy('_build.js', 'gulp/build.js');
     this.copy('_conf.js', 'gulp/conf.js');
