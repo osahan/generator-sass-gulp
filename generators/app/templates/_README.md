@@ -1,4 +1,2 @@
 # <%= props.appName %>
 <%= props.description %>
-
-
