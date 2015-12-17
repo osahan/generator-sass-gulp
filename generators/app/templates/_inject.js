@@ -3,10 +3,7 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
-
 var $ = require('gulp-load-plugins')();
-
-var _ = require('lodash');
 
 var inject = function () {
   var injectStyles = gulp.src([

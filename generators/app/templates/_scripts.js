@@ -11,5 +11,5 @@ var $ = require('gulp-load-plugins')();
 gulp.task('scripts', function () {
   return gulp.src(path.join(conf.paths.src, '/app/**/*.js'))
     .pipe(browserSync.reload({ stream: true }))
-    .pipe($.size())
+    .pipe($.size());
 });
