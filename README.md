@@ -1,5 +1,5 @@
 # generator-sass-gulp
-> Generate a SASS base project with Gulp
+> Generate a SASS base project with Gulp, Browser Sync, and CSS Autoprefixer.
 
 ## Installation
 
