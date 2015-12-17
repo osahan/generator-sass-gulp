@@ -8,7 +8,7 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'uglify-save-license', 'del']
 });
 
-gulp.task('html', ['inject'], function () {
+gulp.task('html', ['inject:build'], function () {
 
   var htmlFilter = $.filter('*.html', { restore: true });
   var jsFilter = $.filter('**/*.js', { restore: true });
@@ -20,8 +20,6 @@ gulp.task('html', ['inject'], function () {
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.sourcemaps.init())
-    .pipe($.ngAnnotate())
-    .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
     .pipe($.sourcemaps.write('maps'))
     .pipe(jsFilter.restore)
     .pipe(cssFilter)

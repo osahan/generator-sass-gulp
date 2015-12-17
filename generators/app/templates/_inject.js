@@ -8,7 +8,7 @@ var $ = require('gulp-load-plugins')();
 
 var _ = require('lodash');
 
-gulp.task('inject', ['scripts', 'styles'], function () {
+var inject = function () {
   var injectStyles = gulp.src([
     path.join(conf.paths.tmp, '/serve/app/**/*.css'),
     path.join('!' + conf.paths.tmp, '/serve/app/vendor.css')
@@ -22,4 +22,7 @@ gulp.task('inject', ['scripts', 'styles'], function () {
   return gulp.src(path.join(conf.paths.src, '/*.html'))
     .pipe($.inject(injectStyles, injectOptions))
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
-});
+};
+
+gulp.task('inject', ['scripts', 'styles'], inject);
+gulp.task('inject:build', ['scripts', 'styles:build'], inject);

@@ -3,22 +3,29 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
-
 var browserSync = require('browser-sync');
-
 var $ = require('gulp-load-plugins')();
-
 var _ = require('lodash');
 
-gulp.task('styles', function () {
+var styles = function (isBuild) {
+
   var sassOptions = {
     style: 'expanded'
   };
-
+  
   var injectFiles = gulp.src([
-    path.join(conf.paths.src, '/app/**/*.scss'),
-    path.join('!' + conf.paths.src, '/app/index.scss')
-  ], { read: false });
+      path.join(conf.paths.src, '/app/**/*.scss'),
+      path.join('!' + conf.paths.src, '/app/index.scss')
+    ], { read: false });
+  
+  if (isBuild) {
+
+    injectFiles = gulp.src([
+      path.join(conf.paths.src, '/app/**/*.scss'),
+      path.join('!' + conf.paths.src, '/app/**/demo/*.scss'),
+      path.join('!' + conf.paths.src, '/app/index.scss')
+    ], { read: false });
+  }
 
   var injectOptions = {
     transform: function(filePath) {
@@ -30,7 +37,6 @@ gulp.task('styles', function () {
     addRootSlash: false
   };
 
-
   return gulp.src([
     path.join(conf.paths.src, '/app/index.scss')
   ])
@@ -41,4 +47,12 @@ gulp.task('styles', function () {
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
     .pipe(browserSync.reload({ stream: true }));
+};
+
+gulp.task('styles', function(){
+  styles(false);
+});
+gulp.task('styles:build', function(){
+
+  styles(true);
 });
