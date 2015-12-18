@@ -1,4 +1,9 @@
 # generator-sass-gulp
+[![npm version](https://badge.fury.io/js/generator-sass-gulp.svg)](https://badge.fury.io/js/generator-sass-gulp)
+[![Build Status](https://travis-ci.org/osahan/generator-sass-gulp.svg?branch=master)](https://travis-ci.org/osahan/generator-sass-gulp)
+[![Dependency Status](https://david-dm.org/osahan/generator-sass-gulp.svg?theme=shields.io)](https://david-dm.org/osahan/generator-sass-gulp)
+
+
 > Generate a SASS base project with Gulp, Browser Sync, and CSS Autoprefixer.
 
 ## Installation
@@ -24,6 +29,8 @@ Yeoman has a heart of gold. He&#39;s a person with feelings and opinions, but he
 ## License
 
 MIT © [Osahan]()
+
+
 
 [npm-image]: https://badge.fury.io/js/generator-sass-gulp.svg
 [npm-url]: https://npmjs.org/package/generator-sass-gulp
