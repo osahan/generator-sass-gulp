@@ -5,60 +5,58 @@ var gulp = require('gulp');
 var conf = require('./conf');
 var browserSync = require('browser-sync');
 var $ = require('gulp-load-plugins')();
-// var _ = require('lodash');
 
-var styles = function(isBuild) {
+var styles = function (isBuild) {
 
-    var sassOptions = {
-        style: 'expanded'
-    };
+  var sassOptions = {
+    style: 'expanded'
+  };
 
-    var injectFiles = gulp.src([
-        path.join(conf.paths.src, '/app/**/*.scss'),
-        path.join('!' + conf.paths.src, '/app/index.scss')
+  var injectFiles = gulp.src([
+    path.join(conf.paths.src, '/app/**/*.scss'),
+    path.join('!' + conf.paths.src, '/app/index.scss')
+  ], {
+    read: false
+  });
+
+  if (isBuild) {
+
+    injectFiles = gulp.src([
+      path.join(conf.paths.src, '/app/**/*.scss'),
+      path.join('!' + conf.paths.src, '/app/**/demo/*.scss'),
+      path.join('!' + conf.paths.src, '/app/index.scss')
     ], {
-        read: false
+      read: false
     });
+  }
 
-    if (isBuild) {
+  var injectOptions = {
+    transform: function (filePath) {
+      filePath = filePath.replace(conf.paths.src + '/app/', '');
+      return '@import "' + filePath + '";';
+    },
+    starttag: '// injector',
+    endtag: '// endinjector',
+    addRootSlash: false
+  };
 
-        injectFiles = gulp.src([
-            path.join(conf.paths.src, '/app/**/*.scss'),
-            path.join('!' + conf.paths.src, '/app/**/demo/*.scss'),
-            path.join('!' + conf.paths.src, '/app/index.scss')
-        ], {
-            read: false
-        });
-    }
-
-    var injectOptions = {
-        transform: function (filePath) {
-            filePath = filePath.replace(conf.paths.src + '/app/', '');
-            return '@import "' + filePath + '";';
-        },
-        starttag: '// injector',
-        endtag: '// endinjector',
-        addRootSlash: false
-    };
-
-    return gulp.src([
-            path.join(conf.paths.src, '/app/index.scss')
-        ])
-        .pipe($.inject(injectFiles, injectOptions))
-        .pipe($.sourcemaps.init())
-        .pipe($.sass(sassOptions)).on('error', conf.errorHandler('Sass'))
-        .pipe($.autoprefixer()).on('error', conf.errorHandler('Autoprefixer'))
-        .pipe($.sourcemaps.write())
-        .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
+  return gulp.src([
+    path.join(conf.paths.src, '/app/index.scss')
+  ])
+    .pipe($.inject(injectFiles, injectOptions))
+    .pipe($.sourcemaps.init())
+    .pipe($.sass(sassOptions)).on('error', conf.errorHandler('Sass'))
+    .pipe($.autoprefixer()).on('error', conf.errorHandler('Autoprefixer'))
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 };
 
-gulp.task('styles', function() {
-    styles(false);
-});
-gulp.task('styles:build', function() {
+gulp.task('styles', styles);
 
-    styles(true);
+gulp.task('styles:build', function () {
+
+  styles(true);
 });

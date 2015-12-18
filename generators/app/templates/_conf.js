@@ -13,18 +13,18 @@ var gutil = require('gulp-util');
  *  The main paths of your project handle these with care
  */
 exports.paths = {
-    src: 'src',
-    dist: 'dist',
-    tmp: '.tmp'
+  src: 'src',
+  dist: 'dist',
+  tmp: '.tmp'
 };
 
 /**
  *  Common implementation for an error handler of a Gulp plugin
  */
-exports.errorHandler = function(title) {
+exports.errorHandler = function (title) {
 
-    return function(err) {
-        gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
-        this.emit('end');
-    };
+  return function (err) {
+    gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
+    this.emit('end');
+  };
 };
