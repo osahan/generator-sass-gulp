@@ -44,4 +44,4 @@ gulp.task('test', ['pre-test'], function (cb) {
 });
 
 gulp.task('prepublish', ['nsp']);
-gulp.task('default', ['static', 'test', 'coveralls']);
+gulp.task('default', ['static', 'test']);
