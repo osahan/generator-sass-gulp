@@ -4,7 +4,7 @@
   "description": "Generate a SASS base project with Gulp, Browser Sync, and CSS Autoprefixer",
   "homepage": "",
   "author": {
-    "name": "Gagandeep Singh",
+    "name": "Osahan",
     "email": "robi_osahan@yahoo.com",
     "url": ""
   },
@@ -16,7 +16,7 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.21.1",
+    "yeoman-generator": "^0.22.1",
     "chalk": "^1.0.0",
     "yosay": "^1.0.2"
   },
