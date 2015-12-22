@@ -8,10 +8,10 @@ var $ = require('gulp-load-plugins')();
 
 var styles = function (isBuild) {
 
-  var sourceFiles,
-      sassOptions = {
-        style: 'expanded'
-      };
+  var sourceFiles;
+  var sassOptions = {
+    style: 'expanded'
+  };
 
   if (isBuild) {
 
@@ -56,7 +56,7 @@ var styles = function (isBuild) {
     }));
 };
 
-gulp.task('styles', function(){
+gulp.task('styles', function () {
   styles();
 });
 
