@@ -8,27 +8,29 @@ var $ = require('gulp-load-plugins')();
 
 var styles = function (isBuild) {
 
-  var sassOptions = {
-    style: 'expanded'
-  };
-
-  var injectFiles = gulp.src([
-    path.join(conf.paths.src, '/app/**/*.scss'),
-    path.join('!' + conf.paths.src, '/app/index.scss')
-  ], {
-    read: false
-  });
+  var sourceFiles,
+      sassOptions = {
+        style: 'expanded'
+      };
 
   if (isBuild) {
 
-    injectFiles = gulp.src([
+    sourceFiles = [
       path.join(conf.paths.src, '/app/**/*.scss'),
       path.join('!' + conf.paths.src, '/app/**/demo/*.scss'),
       path.join('!' + conf.paths.src, '/app/index.scss')
-    ], {
-      read: false
-    });
+    ];
+  } else {
+
+    sourceFiles = [
+      path.join(conf.paths.src, '/app/**/*.scss'),
+      path.join('!' + conf.paths.src, '/app/index.scss')
+    ];
   }
+
+  var injectFiles = gulp.src(sourceFiles, {
+    read: false
+  });
 
   var injectOptions = {
     transform: function (filePath) {
@@ -54,7 +56,9 @@ var styles = function (isBuild) {
     }));
 };
 
-gulp.task('styles', styles);
+gulp.task('styles', function(){
+  styles();
+});
 
 gulp.task('styles:build', function () {
 
