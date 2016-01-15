@@ -4,33 +4,34 @@
 [![Dependency Status](https://david-dm.org/osahan/generator-sass-gulp.svg?theme=shields.io)](https://david-dm.org/osahan/generator-sass-gulp)
 
 
-> Generate a SASS base project with Gulp, Browser Sync, and CSS Autoprefixer.
+> Generate a SASS project with Gulp, Browser Sync, and CSS Autoprefixer.
 
-## Installation
+## Features
 
-First, install [Yeoman](http://yeoman.io) and generator-sass-gulp using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+* CSS Autoprefixing
+* Built-in preview server with BrowserSync
+* Automatically compile Sass
+* Map compiled CSS to source stylesheets with source maps
+* Creates and maintains a demo preview of your project
 
-```bash
-npm install -g yo
-npm install -g generator-sass-gulp
-```
+## Getting Started
+
+- Install dependencies: `npm install -g yo gulp`
+- Install the generator: `npm install -g generator-sass-gulp`
 
 Then generate your new project:
 
 ```bash
 mkdir my-sass-project && cd $_
-yo sass-gulp
 ```
 
-## Getting To Know Yeoman
-
-Yeoman has a heart of gold. He&#39;s a person with feelings and opinions, but he&#39;s very easy to work with. If you think he&#39;s too opinionated, he can be easily convinced. Feel free to [learn more about him](http://yeoman.io/).
+- Run `yo sass-gulp` to scaffold your project
+- Run `gulp serve` to preview and watch for changes
+- Run `gulp build` to build your project files for production
 
 ## License
 
 MIT © [Osahan]()
-
-
 
 [npm-image]: https://badge.fury.io/js/generator-sass-gulp.svg
 [npm-url]: https://npmjs.org/package/generator-sass-gulp
