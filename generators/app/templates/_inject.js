@@ -5,9 +5,10 @@ var gulp = require('gulp');
 var conf = require('./conf');
 var $ = require('gulp-load-plugins')();
 
-var inject = function () {
+gulp.task('inject', ['styles', 'assets'], function () {
+
   var injectStyles = gulp.src([
-    path.join(conf.paths.tmp, '/serve/app/**/*.css'),
+    path.join(conf.paths.tmp, '/serve/app/index.css'),
     path.join('!' + conf.paths.tmp, '/serve/app/vendor.css')
   ], { read: false });
 
@@ -16,10 +17,7 @@ var inject = function () {
     addRootSlash: false
   };
 
-  return gulp.src(path.join(conf.paths.src, '/*.html'))
+  return gulp.src(path.join(conf.paths.src, '/index.html'))
     .pipe($.inject(injectStyles, injectOptions))
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
-};
-
-gulp.task('inject', ['scripts', 'styles'], inject);
-gulp.task('inject:build', ['scripts', 'styles:build'], inject);
+});

@@ -3,7 +3,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
 
   prompting: function () {
     var done = this.async();
@@ -49,7 +49,9 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('_demo.scss', 'src/app/styles/demo/_demo.scss');
     this.copy('_project.scss', 'src/app/styles/modules/_' + appName.toLowerCase() + '.scss');
     this.copy('_index.html', 'src/index.html');
+    this.copy('_assets.js', 'gulp/assets.js');
     this.copy('_build.js', 'gulp/build.js');
+    this.copy('_clean.js', 'gulp/clean.js');
     this.copy('_conf.js', 'gulp/conf.js');
     this.copy('_inject.js', 'gulp/inject.js');
     this.copy('_scripts.js', 'gulp/scripts.js');
