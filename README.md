@@ -1,6 +1,5 @@
 # generator-sass-gulp
 [![npm version](https://badge.fury.io/js/generator-sass-gulp.svg)](https://badge.fury.io/js/generator-sass-gulp)
-[![Build Status](https://travis-ci.org/osahan/generator-sass-gulp.svg?branch=master)](https://travis-ci.org/osahan/generator-sass-gulp)
 [![Dependency Status](https://david-dm.org/osahan/generator-sass-gulp.svg?theme=shields.io)](https://david-dm.org/osahan/generator-sass-gulp)
 
 
